@@ -2,6 +2,7 @@ from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
 
 from db.connection import Base
+from db.plans import Plan  # noqa
 
 
 class Dictionary(Base):

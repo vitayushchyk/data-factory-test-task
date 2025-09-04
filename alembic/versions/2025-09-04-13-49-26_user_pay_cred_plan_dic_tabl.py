@@ -1,8 +1,8 @@
 """user_pay_cred_plan_dic_tabl
 
-Revision ID: 99a46d9c74fe
+Revision ID: 8b20764be269
 Revises:
-Create Date: 2025-09-04 09:25:57.612029
+Create Date: 2025-09-04 13:49:26.081546
 
 """
 
@@ -13,7 +13,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = "99a46d9c74fe"
+revision: str = "8b20764be269"
 down_revision: Union[str, Sequence[str], None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
