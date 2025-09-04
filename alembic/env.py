@@ -8,12 +8,11 @@ from sqlalchemy.ext.asyncio import async_engine_from_config
 from alembic import context
 from core.config import settings
 from db.connection import Base  # noqa
-from db.users import *  # noqa
 from db.credits import *  # noqa
 from db.dictionary import *  # noqa
 from db.payments import *  # noqa
 from db.plans import *  # noqa
-
+from db.users import *  # noqa
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
