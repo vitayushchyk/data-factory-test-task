@@ -1,11 +1,11 @@
-version: '3.9'
+version: '3.13'
 
 services:
   app:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: phrase-generator-api
+    container_name: data-factory-api
     ports:
       - "${SERVER_PORT}:${SERVER_PORT}"
     volumes:
