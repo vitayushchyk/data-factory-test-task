@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, Date, DECIMAL, ForeignKey
 
-from sqlalchemy.orm import relationship, declarative_base
+from sqlalchemy.orm import relationship
 
 from db.connection import Base
 

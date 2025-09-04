@@ -35,10 +35,6 @@ open_log: ## Open api log
 build: ## Rebuild application
 	docker compose build
 
-.build/img: Dockerfile docker-compose.yml poetry.lock pyproject.toml
-	docker compose build
-	mkdir -p .build
-	touch .build/img
 
 
 
@@ -50,4 +46,8 @@ endif
 
 migrate: run_app ## Apply migrations
 	docker compose exec app alembic upgrade head
+
+
+load_data: ## Load all data to db
+	docker exec -it data-factory-api python -m loader.data_loader
 
