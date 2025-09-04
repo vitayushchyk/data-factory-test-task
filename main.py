@@ -1,6 +1,9 @@
 from fastapi import FastAPI
 
+from config.logging_config import LoggerConfigurator
 from routers.health_check_router import health_check_router
+
+logger = LoggerConfigurator.setup_logger(__name__, to_file="logs/log")
 
 
 def create_app() -> FastAPI:

@@ -104,6 +104,7 @@ source = { virtual = "." }
 dependencies = [
     { name = "alembic" },
     { name = "asyncmy" },
+    { name = "black" },
     { name = "colorlog" },
     { name = "fastapi" },
     { name = "pandas" },
@@ -121,6 +122,7 @@ dev = [
 requires-dist = [
     { name = "alembic", specifier = ">=1.16.5" },
     { name = "asyncmy", specifier = ">=0.2.10" },
+    { name = "black", specifier = ">=25.1.0" },
     { name = "colorlog", specifier = ">=6.9.0" },
     { name = "fastapi", specifier = ">=0.116.1" },
     { name = "pandas", specifier = ">=2.3.2" },
