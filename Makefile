@@ -24,13 +24,13 @@ drop_all_containers: ## Drop all containers
 
 lint_check: run_app
 lint_check: ## run static checkers & fix issues
-	docker compose exec app black --check .
+	docker compose exec app black .
 
 open_shell: ## Open shell to the app container
 	docker compose exec app bash
 
 open_log: ## Open api log
-	docker compose logs -f api
+	docker compose logs -f app
 
 build: ## Rebuild application
 	docker compose build
@@ -39,3 +39,15 @@ build: ## Rebuild application
 	docker compose build
 	mkdir -p .build
 	touch .build/img
+
+
+
+create_migrations: run_app ## Create migration. Usage `make create_migrations m="migration message"`
+ifeq ($(strip $(m)),)
+	$(error 'Migration should contains message. Please use make create_migrations m="some message here"')
+endif
+	docker compose exec app alembic revision --autogenerate -m "$(m)"
+
+migrate: run_app ## Apply migrations
+	docker compose exec app alembic upgrade head
+
