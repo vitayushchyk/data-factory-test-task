@@ -3,12 +3,12 @@ from typing import List
 import asyncio
 from sqlalchemy import select
 from db.connection import async_session_maker
-from db.users import User
-from db.credits import Credit
-from db.dictionary import Dictionary
-from db.plans import Plan
-from db.payments import Payment
-from main import logger
+from db.users_model import User
+from db.credits_model import Credit
+from db.dictionary_model import Dictionary
+from db.plans_model import Plan
+from db.payments_model import Payment
+from logs.config.logging_config import logger
 
 
 class DataLoader:
@@ -102,7 +102,7 @@ class DataLoader:
             # Dictionaries
             result = await session.execute(select(Dictionary.id))
             existing_dict_ids = {row[0] for row in result.all()}
-            dict_objs = await self.load_dictionaries("data/dictionary.csv")
+            dict_objs = await self.load_dictionaries("test_data/dictionary.csv")
             new_dicts = [obj for obj in dict_objs if obj.id not in existing_dict_ids]
             if new_dicts:
                 session.add_all(new_dicts)
@@ -113,7 +113,7 @@ class DataLoader:
             # Users
             result = await session.execute(select(User.id))
             existing_user_ids = {row[0] for row in result.all()}
-            user_objs = await self.load_users("data/users.csv")
+            user_objs = await self.load_users("test_data/users.csv")
             new_users = [obj for obj in user_objs if obj.id not in existing_user_ids]
             if new_users:
                 session.add_all(new_users)
@@ -124,7 +124,7 @@ class DataLoader:
             # Plans
             result = await session.execute(select(Plan.id))
             existing_plan_ids = {row[0] for row in result.all()}
-            plan_objs = await self.load_plans("data/plans.csv")
+            plan_objs = await self.load_plans("test_data/plans.csv")
             new_plans = [obj for obj in plan_objs if obj.id not in existing_plan_ids]
             if new_plans:
                 session.add_all(new_plans)
@@ -135,7 +135,7 @@ class DataLoader:
             # Credits
             result = await session.execute(select(Credit.id))
             existing_credit_ids = {row[0] for row in result.all()}
-            credit_objs = await self.load_credits("data/credits.csv")
+            credit_objs = await self.load_credits("test_data/credits.csv")
             new_credits = [
                 obj for obj in credit_objs if obj.id not in existing_credit_ids
             ]
@@ -148,7 +148,7 @@ class DataLoader:
             # Payments
             result = await session.execute(select(Payment.id))
             existing_payment_ids = {row[0] for row in result.all()}
-            payment_objs = await self.load_payments("data/payments.csv")
+            payment_objs = await self.load_payments("test_data/payments.csv")
             new_payments = [
                 obj for obj in payment_objs if obj.id not in existing_payment_ids
             ]

@@ -1,11 +1,10 @@
 from fastapi import FastAPI
 
 
-from config.logging_config import LoggerConfigurator
 from routers.health_check_router import health_check_router
-from routers.user_credits_rout import user_credits
 
-logger = LoggerConfigurator.setup_logger(__name__, to_file="logs/log")
+
+from routers.user_credits_rout import user_credits
 
 
 def create_app() -> FastAPI:
@@ -16,6 +15,7 @@ def create_app() -> FastAPI:
         debug=True,
     )
     app.include_router(health_check_router)
+
     app.include_router(user_credits)
 
     return app
