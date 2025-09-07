@@ -3,6 +3,7 @@ from fastapi import FastAPI
 
 from routers.health_check_router import health_check_router
 from routers.plan_insert_router import load_data_rout
+from routers.plan_performance_router import plan_perf_rout
 
 from routers.user_credits_rout import user_credits
 
@@ -18,6 +19,7 @@ def create_app() -> FastAPI:
     app.include_router(load_data_rout)
 
     app.include_router(user_credits)
+    app.include_router(plan_perf_rout)
 
     return app
 
