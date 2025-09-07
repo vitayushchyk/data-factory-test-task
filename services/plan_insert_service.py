@@ -9,7 +9,7 @@ import pandas as pd
 from starlette.status import HTTP_409_CONFLICT, HTTP_400_BAD_REQUEST
 
 from db import Plan
-from repo.plan_insert_repo import PlanRepo
+from repo.plan_repo import PlanRepo
 
 SUM = "сума"
 PERIOD = "місяць плану"

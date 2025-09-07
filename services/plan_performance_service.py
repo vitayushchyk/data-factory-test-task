@@ -1,7 +1,7 @@
 import calendar
 from datetime import date
 
-from repo.plan_insert_repo import PlanRepo
+from repo.plan_repo import PlanRepo
 
 
 class PlanPerformanceService:

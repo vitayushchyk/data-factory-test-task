@@ -32,11 +32,6 @@ open_shell: ## Open shell to the app container
 open_log: ## Open api log
 	docker compose logs -f app
 
-build: ## Rebuild application
-	docker compose build
-
-
-
 
 create_migrations: run_app ## Create migration. Usage `make create_migrations m="migration message"`
 ifeq ($(strip $(m)),)
@@ -46,8 +41,3 @@ endif
 
 migrate: run_app ## Apply migrations
 	docker compose exec app alembic upgrade head
-
-
-load_data: ## Load all data to db
-	docker exec -it data-factory-api python -m loader.data_loader
-
