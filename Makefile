@@ -41,3 +41,5 @@ endif
 
 migrate: run_app ## Apply migrations
 	docker compose exec app alembic upgrade head
+load_data: ## Load all data to db
+	docker exec -it data-factory-api python -m loader.data_loader
