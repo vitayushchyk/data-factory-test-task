@@ -32,6 +32,9 @@ Firstly, you need to have [Docker](https://docs.docker.com/get-docker/) installe
 - Apply migrations:
 
       make migrate
+- Load test data:
+
+      make load_test_data
 
 ## Interactive API docs:
 
