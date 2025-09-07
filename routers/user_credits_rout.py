@@ -1,8 +1,11 @@
+from typing import Annotated
+
 from fastapi import APIRouter, Depends
-from sqlalchemy.ext.asyncio import AsyncSession
-from db.connection import get_async_session
-from schemas.credits_info_schema import UserCreditsRes
-from services.user_credits_service import UserCreditCRUD
+
+
+from core.deps import get_user_credits_service
+
+from services.user_credits_service import UserCreditService
 
 user_credits = APIRouter(tags=["User credits"], prefix="/user_credits")
 
@@ -12,9 +15,9 @@ user_credits = APIRouter(tags=["User credits"], prefix="/user_credits")
     description="Get all user credits",
 )
 async def get_user_credits(
-    user_id: int, session: AsyncSession = Depends(get_async_session)
+    user_id: int,
+    user_credits_service: Annotated[
+        UserCreditService, Depends(get_user_credits_service)
+    ],
 ):
-    crud = UserCreditCRUD(session)
-    result = await crud.get_all_user_credits(user_id)
-
-    return result
+    return await user_credits_service.get_all_user_credits(user_id)

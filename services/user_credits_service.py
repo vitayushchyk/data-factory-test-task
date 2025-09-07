@@ -9,7 +9,7 @@ from schemas.credits_info_schema import CreditInfo, UserCreditsRes
 from datetime import date
 
 
-class UserCreditCRUD:
+class UserCreditService:
     def __init__(self, session: AsyncSession):
         self.repo = UserCreditRepo(session)
 

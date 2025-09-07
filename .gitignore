@@ -164,4 +164,3 @@ cython_debug/
 .idea/
 notes
 .DS_Store
-logs
